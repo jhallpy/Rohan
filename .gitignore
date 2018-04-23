@@ -1,1 +1,11 @@
 config.js
+
+packge.json
+package-lock.json
+
+node_moedules/
+config.json
+
+secretSanta.js
+db_connection.js
+ss.js
