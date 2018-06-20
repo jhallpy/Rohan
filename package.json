@@ -1,14 +1,13 @@
 {
-  "name": "Rohan",
+  "name": "rohan",
   "version": "0.0.1",
   "description": "Art prompt bot for Discord",
   "main": "rohan.js",
   "scripts": {
     "start": "node rohan.js"
-  }
-  ,
+  },
   "engines": {
-  "node": "6.10.0"
+    "node": "6.10.0"
   },
   "contributors": [
     "Furiianda <furiianda@gmail.com>",

@@ -1,4 +1,8 @@
 module.exports = {
+    //Returns a true or false. Used to make sure that a user is mentioned first. Explained in HD command.
+    checkForOnlyUser: (args,message) => {
+        return message.mentions.users.map(u=>u.id) == args[0].replace(/[^0-9]/g, "");
+    },
     //Checks for User ID. This doesn't check args length due to NEEDING a user ID.
     checkUsers: (message)=> {
         let size = message.mentions.users.map(u=>u.id).length;
@@ -54,5 +58,5 @@ module.exports = {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
-        }
+    }
 } 
