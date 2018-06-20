@@ -15,7 +15,7 @@ const misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
     let msg = args.join(' ').replace(/\s+/g, '');
-    let output;
+    let output ='';
     for(i=0;i<msg.length;i++)
     {
       if (msg.charAt(i) === 'a') {
@@ -58,5 +58,8 @@ exports.run = (client, message, args) => {
         output += misc.randomInArray(transitive) + ' ';
       }
     }
-    message.channel.send(output);
+    if(!output)
+      message.channel.send('Please use the `~help` command if you need help with this command');
+    else
+      message.channel.send(output);
 }

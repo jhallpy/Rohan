@@ -7,5 +7,5 @@ exports.run = (client, message, args) => {
     else if(!misc.checkThree(args))
         message.channel.send('Please use 3 names :thinking:');
     else
-        message.channel.send('An Error occursed. Please type ~help if you need help.');
+        message.channel.send('An error occured. Please use the `~help` command if you need help.');
 }
