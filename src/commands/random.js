@@ -14,7 +14,7 @@ const { objects } = require('../assets/arrays/objects.json');
 const misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
-    let msg = args.join(' ').replace(/\s+/g, '');
+    let msg = args.join(' ').replace(/\s+/g, '').toLowerCase();
     let output = '';
     for(i=0;i<msg.length;i++)
     {
