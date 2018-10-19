@@ -28,6 +28,10 @@ exports.run = (client, message, args) => {
         message.channel.send('anon');
     else if (args[0] === 'upload')
         message.channel.send('upload');
+    else if (args[0] === 'test'){
+        misc.databaseConnection();
+        message.channel.send('Please jesus work.');
+    }
     else
         message.channel.send('Please use the `~ss help` command if you need help.')   
 }

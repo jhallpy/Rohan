@@ -1,3 +1,5 @@
+const db = require('../utils/db_connection.js');
+
 module.exports = {
     //Returns a true or false. Used to make sure that a user is mentioned first. Explained in HD command.
     checkForOnlyUser: (args,message) => {
@@ -58,5 +60,8 @@ module.exports = {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    },
+    databaseConnection: () =>{
+        db.dbConnect();
     }
 } 
