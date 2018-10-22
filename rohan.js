@@ -2,8 +2,8 @@
 Hello and welcome to Rohan!
 */
 const Discord = require('discord.js');
-const Enmap = require("enmap");
-const fs = require("fs");
+//const Enmap = require("enmap");
+//const fs = require("fs");
 
 const config = require ("./config.json");
 const client = new Discord.Client();
@@ -20,7 +20,7 @@ client.on('message', message => {
 
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase().replace(/[\W_]+/g,"");
-  
+
   try{
     let commandFile = require(`./commands/${command}.js`)
     commandFile.run(client, message, args);

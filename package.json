@@ -1,16 +1,19 @@
 {
-  "name": "rohan",
-  "version": "0.0.1",
+  "name": "Rohan",
+  "version": "2.2.0",
   "description": "Art prompt bot for Discord",
   "main": "rohan.js",
   "scripts": {
     "start": "node rohan.js"
   },
   "engines": {
-    "node": "6.10.0"
+    "node": ">=8"
   },
   "contributors": [
     "Furiianda <furiianda@gmail.com>",
-    "Aver <alamoscout117@gmail.com>"
-  ]
+    "Aver <jhallcs12@gmail.com> (https://github.com/joshua-hallwd)"
+  ],
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
 }
