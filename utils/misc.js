@@ -1,5 +1,3 @@
-const db = require('../utils/db_connection.js');
-
 module.exports = {
     //Returns a true or false. Used to make sure that a user is mentioned first. Explained in HD command.
     checkForOnlyUser: (args,message) => {
@@ -44,6 +42,7 @@ module.exports = {
         else 
             return false;
     },
+    //Potential no longer needed, keeping in for now.
     checkEmpty: (message)=>{
         let size = message.mentions.users.map(u=>u.id).length;
         if (message.mentions.users.map(u=>u.id).length < 1)
