@@ -59,8 +59,5 @@ module.exports = {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
-    },
-    databaseConnection: () =>{
-        db.dbConnect();
     }
 } 
