@@ -13,14 +13,13 @@ client.on('ready', () => {
   console.log(`I, ${client.user.username}, am ready.`);
 });
 client.on('message', message => {
-  //Ignores messages that don't start with prefix
-  if (message.content.indexOf(config.prefix) !== 0) return;
+  //Ignores messages that don't start with prefix. 
+  //Also to check if it occurs more than once for example `~~test~~` is a strikethrough, it would trigger the response if we didn't check.
+  if (message.content.indexOf(config.prefix) !== 0 || message.content.lastIndexOf(config.prefix) > 0) return;
   //Ignores all bots
   if (message.author.bot) return;
-
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase().replace(/[\W_]+/g,"");
-
   try{
     let commandFile = require(`./commands/${command}.js`)
     commandFile.run(client, message, args);
@@ -29,7 +28,7 @@ client.on('message', message => {
     console.log(err);
     message.channel.send('Sorry, I don\'t recognize that command.');
     //add a log file later.
-}
+  }
 });
 
-client.login(config.rohanToken);
+client.login(config.token);
