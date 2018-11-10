@@ -5,16 +5,7 @@ const Discord = require('discord.js');
 
 const config = require ("./config.json");
 const client = new Discord.Client();
-
 const mysql = require('mysql');
-const pool = mysql.createPool({
-  //Looking for a way to do this easier. This works for now.
-  connectionLimit: 10,
-  host : config.dbLogin.host,
-  user : config.dbLogin.user,
-  password : config.dbLogin.password
-});
-
 client.config = config;
 
 client.on('ready', () => {
@@ -47,4 +38,4 @@ client.on('message', message => {
   
 });
 
-client.login(config.token);
+client.login(config.rohanToken);
