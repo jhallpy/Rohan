@@ -1,4 +1,4 @@
 {
     "help": "To access my prompt library, type any of the following category letters in any order preceded by the command `~random`:\n`(A)djectives(J)obs(E)xpressions(V)erbs(T)ransitiveVerbs(C)lothing(S)trange nouns(F)auna(U)nreal/unusual animals(P)lants(M)eals(O)bjects(L)ocales`\nExample: typing `~random aj` might return `abducted basketballer`\n\n`~hd @mention` to activate the power of my ｢stand｣. Alternatively: `~sp` or `~dj`\n`~duwang` to don't be dong.\n\nPlease forward bug reports (non-responsive commands, spelling errors, etc.) or suggestions to (discord users) Furiianda#2657 or Aver#2487.",
-    "sshelp": "Placeholder text.json"
+    "santa": "Placeholder text.json"
 }

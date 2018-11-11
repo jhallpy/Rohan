@@ -38,4 +38,4 @@ client.on('message', message => {
   
 });
 
-client.login(config.rohanToken);
+client.login(config.token);
