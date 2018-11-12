@@ -1,6 +1,7 @@
 const { help } = require('../assets/arrays/text.json')
 exports.run = (client, message, args) => {
-    message.channel.send({embed : {
+    message.reply('Sent you a DM with information!');
+    message.author.send({embed : {
         color: 0xfff,
         author :{
             name: client.user.username,
