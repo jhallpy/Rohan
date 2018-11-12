@@ -59,5 +59,15 @@ module.exports = {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    },
+    //For Santa creation. Database accepts length of 10 currently. Increase in Database if length increased.
+    generatePasscode: () =>{
+        let length = 8,
+            charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+            retVal = '';
+        for (var i = 0; i < length; i++){
+            retVal += charset.charAt(Math.floor(Math.random() *charset.length));
+        }
+        return retVal;
     }
 } 

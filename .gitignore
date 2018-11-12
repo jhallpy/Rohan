@@ -1,10 +1,8 @@
 node_modules/
 config.json
+todo.txt
 
 test.js
-db_connection.js
 uh.js
-outdated_module.js
-setup.js
 
 stats.js
