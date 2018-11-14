@@ -2,15 +2,41 @@ const help = require('../../assets/arrays/text.json');
 const misc = require('../../utils/misc');
 const pool = require('../../utils/db');
 const db = require('../../utils/dbMisc');
+const shortid = require('shortid');
 exports.run = (client, message, args) => {
-    let passcode = misc.generatePasscode();
-    pool.query('SELECT Passcode FROM santa_event_info;', function(err,result,fields){
+    let newPasscode = shortid.generate();
+    pool.query('SELECT * FROM santa_event_info WHERE AdminID=?', [message.author.id] ,function(err,result,fields){
+        console.log(result);
         if(err) throw err;
-        console.log(result.length);
-        for(var i = 0; i < result.length; i++){
-            if(result[i].passcode === passcode){
-                //figure out easy way to check against all passcodes to make sure there are no duplicates, if there are get a new passcode!
-            }
+        else if(result === undefined || result.length === 0){
+            pool.query('INSERT INTO santa_event_info (Passcode,AdminID,Complete) VALUES (?,?,?)', [newPasscode,message.author.id,false], function(err,result,fields){
+                if(err){ 
+                    message.channel.send('There was an error. Please try again or submit a bug report.');
+                    throw err;
+                }
+                else
+                    message.channel.send('Will be a json pull from help file explaining what steps to take next. From there users can continue on to setup the event. also passcode: ``'+newPasscode+ '``');
+            });
+            return;
         }
-    })
+        //checks result object for each entry, some suers will have multiple. If all come back as not null, continue to next if statement.
+        else if (result[result.length -1].Complete === 0){
+            message.channel.send('You haven\'t completed setup of another event. Sending a DM with further instructions.' );
+            message.author.send('This is the passcode.: ``' + result[result.length-1].Passcode + '`` \nPlease use ``~santa info`` and finish the event setup first.');
+        }
+        //Checks current date vs end date of users last event. If last even isn't over, go to else statement.
+        else if(Date.parse(new Date())>Date.parse(result[result.length - 1].EndDate)){
+            pool.query('INSERT INTO santa_event_info (Passcode,AdminID,Complete) VALUES (?,?,?)', [newPasscode,message.author.id, false], function(err,result,fields){
+                if(err){ 
+                    //should add a way to log these
+                    message.channel.send('There was an error. Please try again or submit a bug report.');
+                    throw err;
+                }
+                else
+                    message.channel.send('Will be a json pull from help file explaining what steps to take next. From there users can continue on to setup the event. also passcode:'+newPasscode);
+            });
+        }
+        else
+            message.channel.send('Your last event isn\'t over! Use ``~santa info`` for more details.');
+    });
 }
