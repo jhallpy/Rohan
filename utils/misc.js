@@ -49,7 +49,8 @@ module.exports = {
             return true;
         else 
             return false;
-    },
+    }
+    ,
     randomInArray: (array)=>{
         return array[Math.floor(Math.random() * array.length)];
     },
@@ -60,4 +61,4 @@ module.exports = {
         }
         return array;
     }
-} 
+}

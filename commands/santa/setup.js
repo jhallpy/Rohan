@@ -3,19 +3,27 @@ const misc = require('../../utils/misc');
 const pool = require('../../utils/db');
 const db = require('../../utils/dbMisc');
 const shortid = require('shortid');
+const moment = require('moment');
+
 exports.run = (client, message, args) => {
     let newPasscode = shortid.generate();
     pool.query('SELECT * FROM santa_event_info WHERE AdminID=?', [message.author.id] ,function(err,result,fields){
         console.log(result);
         if(err) throw err;
         else if(result === undefined || result.length === 0){
-            pool.query('INSERT INTO santa_event_info (Passcode,AdminID,Complete) VALUES (?,?,?)', [newPasscode,message.author.id,false], function(err,result,fields){
+            pool.query('INSERT INTO santa_event_info (Passcode,AdminID,InitDate,Complete) VALUES (?,?,?,?)', [newPasscode,message.author.id, moment().format('YYYY-MM-DD'), false], function(err,result,fields){
                 if(err){ 
                     message.channel.send('There was an error. Please try again or submit a bug report.');
                     throw err;
                 }
-                else
-                    message.channel.send('Will be a json pull from help file explaining what steps to take next. From there users can continue on to setup the event. also passcode: ``'+newPasscode+ '``');
+                else{
+                    if(message.guild === null)
+                        message.author.send('Will be a json pull from help file explaining what steps to take next. From there users can continue on to setup the event. also passcode: ``'+newPasscode+ '`` Also make this a reply you retard');
+                    else{
+                        message.reply('I will send you a DM with more info.');
+                        message.author.send('Will be a json pull from help file explaining what steps to take next. From there users can continue on to setup the event. also passcode: ``'+newPasscode+ '`` Also make this a reply you retard');
+                    }
+                }
             });
             return;
         }
