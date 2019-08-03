@@ -1,7 +1,0 @@
-{
-    "help": "`~random` - generates random word prompts, assigned into categories: (A)djectives (J)obs (E)xpressions (V)erbs (T)ransitiveVerbs (C)lothing (S)trange nouns (F)auna (U)nreal/unusual animals (P)lants (M)eals (O)bjects (L)ocales\nExample: typing `~random aj` might return `abducted basketballer`\n`~hd @mention` - activates the power of my ｢stand｣. Alternatives: `~sp` or `~dj`\n`~duwang` - don't be dong.\n`~fmk` - Fuck/Marry/Kill. Input 3 names separated by spaces.\n`~fanfmk` - Same as above, but with classic fanfiction tropes Fake Date/Slow Burn/Enemies to Lovers.\n`~ship` - Input 2 names separated by spaces to generate a ship name for them.\n`~jojo` - Generates a random JoJo character, from major characters.\n`~jojox` - Generates a random JoJo character, including minor characters.\n`~santa` gives detailed help about the Secret Santa commands.\n\nPlease forward bug reports (non-responsive commands, spelling errors, etc.) or suggestions to (discord users) Furiianda#2657 or Aver#2487.",
-    "santa": "Welcome to Rohan's Secret Santa. This is still a placeholder. Furii will make this a nice and beautiful work of art at some point. For now you're stuck with me.",
-    "userCommands":"bloop",
-    "adminCommands": "``santa begin:``Currently the planned starting point. "
-    
-}

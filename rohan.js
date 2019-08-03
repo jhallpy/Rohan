@@ -20,13 +20,12 @@ client.on('message', message => {
   //additional expansion to the bot, still WIP
   else if(smallCommand.indexOf('valid') > -1){
     try{
-      const args = '';
       let commandFile = require('./commands/valid.js');
-      commandFile.run(client, message, args);
+      commandFile.run(client, message);
     }
     catch (err) {
       console.log(err);
-      message.channel.send('Sorry, I don\'t recognize that command.');
+      message.channel.send('Sorry, something went wrong.');
       //add a log file later.
     }
   }
