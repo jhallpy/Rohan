@@ -60,5 +60,14 @@ module.exports = {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    },
+    isCommand: (array, args) => {
+        for(let i = array.length -1; i > 0, i--;){
+            if(array[i] == args + '.js') return true;
+        };
+        return false;
+    },
+    isSpecialCommand: (array, args) => {
+        
     }
 }
