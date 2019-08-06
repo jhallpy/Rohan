@@ -62,12 +62,10 @@ module.exports = {
         return array;
     },
     isCommand: (array, args) => {
+        //TODO: Fix this for loop...
         for(let i = array.length -1; i > 0, i--;){
             if(array[i] == args + '.js') return true;
         };
         return false;
-    },
-    isSpecialCommand: (array, args) => {
-        
     }
 }
