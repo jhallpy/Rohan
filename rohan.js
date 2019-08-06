@@ -14,21 +14,33 @@ const specialComFolder = './special_commands/';
 const commandFolder = './commands/';
 
 var specialCommands = [];
-var regex='';
+var specialRegex = '';
 var commands = [];
+var regex = '';
 
 
 client.on('ready', () => {
   console.log(`I, ${client.user.username}, am ready.`);
 });
 
-fs.readdir(commandFolder, (err,files) => {
-  files.forEach(file => {
-    if(!file.endsWith('.js')) return;
-    commands.push(file);
-  })
-});
 var promise = new Promise((resolve, reject) => {
+  fs.readdir(commandFolder, (err,files) => {
+    files.forEach(file => {
+      if(!file.endsWith('.js')) return;
+      commands.push(file.slice(0, file.length-3));
+    })
+    resolve(commands);
+  })
+})
+.then((value) => {
+  value.forEach(x => regex += "\|\\b"+x+"\\b");
+  regex = regex.slice(1);
+  regex = new RegExp(regex, 'g');
+})
+.catch((err) =>{
+  console.log(err);
+});
+var promise1 = new Promise((resolve, reject) => {
   fs.readdir(specialComFolder, (err,files) => {
     files.forEach(file => {
       if(!file.endsWith('.js')) return;
@@ -38,9 +50,9 @@ var promise = new Promise((resolve, reject) => {
   })
 })
 .then((value) => {
-  value.forEach(x => regex += "\|\\b"+x+"\\b");
-  regex = regex.slice(1);
-  regex = new RegExp(regex, 'g');
+  value.forEach(x => specialRegex += "\|\\b"+x+"\\b");
+  specialRegex = specialRegex.slice(1);
+  specialRegex = new RegExp(specialRegex, 'g');
 })
 .catch((err) =>{
   console.log(err);
@@ -52,26 +64,26 @@ client.on('message', message => {
   let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   let command = args.shift().toLowerCase().replace(/[\W_]+/g,"");
   let messageContent = message.content.trim();
-  
   //Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
   if (message.author.bot) return;
 
   //must check for prefix, will mess up other commands if it doesn't.
   else if(message.content.indexOf(config.prefix) !== 0){
-    if (message.content.match(regex) !== null){
-      let commandFile = require(`./special_commands/${message.content.match(regex)}.js`);
+    if (message.content.match(specialRegex) !== null){
+      let commandFile = require(`./special_commands/${message.content.match(specialRegex)}.js`);
       commandFile.run(client, message);
     }
   }
-  
+
   //Ignores messages that don't start with prefix. Also checks against strikethroughs.
   else if (message.content.indexOf(config.prefix) !== 0 || message.content.lastIndexOf(config.prefix) > 0) return;
 
-  else if (misc.isCommand(commands, command)){
-    let commandFile = require(`./commands/${command}.js`);
+  else if (command.match(regex) !== null){
+    let commandFile = require(`./commands/${command.match(regex)}.js`);
     commandFile.run(client, message, args);
   }
   else
     message.channel.send('Sorry, I don\'t recognize that command.');
+  //misc.isCommand(commands, command)
 });
 client.login(config.token);
