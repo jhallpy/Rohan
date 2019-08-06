@@ -1,5 +1,5 @@
-const { objects } = require('../assets/arrays/objects.json');
-const misc = require('../utils/misc.js');
+let { objects } = require('../assets/arrays/objects.json');
+let misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
     if(misc.checkEmpty(message))

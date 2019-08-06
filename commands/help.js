@@ -1,4 +1,4 @@
-const { help } = require('../assets/arrays/text.json')
+let { help } = require('../assets/arrays/text.json')
 exports.run = (client, message, args) => {
     message.reply('I have sent you a DM with information.');
     message.author.send({embed : {

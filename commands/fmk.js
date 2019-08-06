@@ -1,4 +1,4 @@
-const misc = require('../utils/misc.js');
+let misc = require('../utils/misc.js');
 exports.run = (client, message, args) => {
     if (misc.checkThree(args)){
         args = misc.shuffleArray(args);

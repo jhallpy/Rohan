@@ -1,6 +1,6 @@
-const { jobs } = require('../assets/arrays/jobs.json');
-const { heaven } = require('../assets/arrays/heaven.json');
-const misc = require('../utils/misc.js');
+let { jobs } = require('../assets/arrays/jobs.json');
+let { heaven } = require('../assets/arrays/heaven.json');
+let misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
     if(misc.checkUsers(message))

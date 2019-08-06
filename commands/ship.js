@@ -1,4 +1,4 @@
-const misc = require('../utils/misc.js');
+let misc = require('../utils/misc.js');
 exports.run = (client, message, args, guild) => {
   if(misc.checkTwoID(message)){
     //This has to be used in order to get a guild members display name. There might be a way through the API but, this is 100x easier.
