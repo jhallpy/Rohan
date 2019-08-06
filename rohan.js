@@ -58,19 +58,19 @@ var promise1 = new Promise((resolve, reject) => {
   console.log(err);
 });
 //TODO: Convert to async and make event handlers placed in a separate folder.
+//TODO: Add in escaping for the user input. Currently works well. 
 //TODO: Add new prompt command with array.
 
 client.on('message', message => {
   let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   let command = args.shift().toLowerCase().replace(/[\W_]+/g,"");
-  let messageContent = message.content.trim();
   //Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
   if (message.author.bot) return;
 
   //must check for prefix, will mess up other commands if it doesn't.
   else if(message.content.indexOf(config.prefix) !== 0){
     if (message.content.match(specialRegex) !== null){
-      let commandFile = require(`./special_commands/${message.content.match(specialRegex)}.js`);
+      let commandFile = require(`./special_commands/${message.content.match(specialRegex)[0]}.js`);
       commandFile.run(client, message);
     }
   }
@@ -79,11 +79,10 @@ client.on('message', message => {
   else if (message.content.indexOf(config.prefix) !== 0 || message.content.lastIndexOf(config.prefix) > 0) return;
 
   else if (command.match(regex) !== null){
-    let commandFile = require(`./commands/${command.match(regex)}.js`);
+    let commandFile = require(`./commands/${command.match(regex)[0]}.js`);
     commandFile.run(client, message, args);
   }
   else
     message.channel.send('Sorry, I don\'t recognize that command.');
-  //misc.isCommand(commands, command)
 });
 client.login(config.token);
