@@ -48,17 +48,15 @@ var promise1 = new Promise((resolve, reject) => {
 })
 .then((value) => {
   value.forEach(x => specialRegex += "\|\\b"+x+"\\b");
-  specialRegex = specialRegex.slice(1);
-  specialRegex = new RegExp(specialRegex, 'g');
+  specialRegex = new RegExp(specialRegex.slice(1), 'g');
 })
 .catch((err) =>{
   console.log(err);
 });
-for(var i = 0; i < sing.lyrics.length; i++){
-  singingRegex += "\|\\b"+sing.lyrics[i].input+"\\b";
-}
-singingRegex = singingRegex.slice(1);
-singingRegex = new RegExp(singingRegex, 'g');
+sing.lyrics.forEach(x =>{
+  singingRegex += "\|\\b"+x.input+"\\b";
+})
+singingRegex = new RegExp(singingRegex.slice(1), 'g');
 //TODO: Convert to async and make event handlers placed in a separate folder.
 //TODO: Add in escaping for the user input. Currently works well. 
 //TODO: Add new prompt command with array.
