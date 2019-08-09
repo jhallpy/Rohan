@@ -1,5 +1,5 @@
-let { heaven } = require('../assets/arrays/heaven.json');
-let misc = require('../utils/misc.js');
+const heaven = require('../assets/arrays/heaven.json');
+const misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
     if(misc.checkUsers(message))

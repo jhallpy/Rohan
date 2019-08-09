@@ -1,5 +1,6 @@
-let prompt = require('../assets/arrays/prompt.json');
-let misc = require('../utils/misc.js');
+const prompt = require('../assets/arrays/prompt.json');
+const misc = require('../utils/misc.js');
+
 exports.run = (client, message, args) =>{
     console.log(args);
     if(args === undefined || args.length == 0){

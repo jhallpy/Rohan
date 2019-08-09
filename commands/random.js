@@ -1,17 +1,17 @@
-let { adjectives } = require('../assets/arrays/adjectives.json');
-let { expressions } = require('../assets/arrays/expressions.json');
-let { verbs } = require('../assets/arrays/verbs.json');
-let { transitive } = require('../assets/arrays/transitive.json');
-let { clothing } = require('../assets/arrays/clothing.json');
-let { strange } = require('../assets/arrays/strange.json');
-let { fauna } = require('../assets/arrays/fauna.json');
-let { unreals } = require('../assets/arrays/unreals.json');
-let { plants } = require('../assets/arrays/plants.json');
-let { meals } = require('../assets/arrays/meals.json');
-let { locales } = require('../assets/arrays/locales.json');
-let { jobs } = require('../assets/arrays/jobs.json');
-let { objects } = require('../assets/arrays/objects.json');
-let misc = require('../utils/misc.js');
+const adjectives = require('../assets/arrays/adjectives.json');
+const expressions = require('../assets/arrays/expressions.json');
+const verbs = require('../assets/arrays/verbs.json');
+const transitive = require('../assets/arrays/transitive.json');
+const clothing = require('../assets/arrays/clothing.json');
+const strange = require('../assets/arrays/strange.json');
+const fauna = require('../assets/arrays/fauna.json');
+const unreals = require('../assets/arrays/unreals.json');
+const plants = require('../assets/arrays/plants.json');
+const meals = require('../assets/arrays/meals.json');
+const locales = require('../assets/arrays/locales.json');
+const jobs = require('../assets/arrays/jobs.json');
+const objects = require('../assets/arrays/objects.json');
+const misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
     let msg = args.join(' ').replace(/\s+/g, '').toLowerCase();
