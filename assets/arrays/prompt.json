@@ -1,0 +1,13 @@
+{
+    "prompt":[
+        "this is a test prompt",
+        "this is another test prompt"
+    ],
+    "onePrompt":[
+        "this is a test prompt $person",
+        "$person arrrr"
+    ],
+    "twoPrompt":[
+        "$person1 testing $person2"
+    ]
+}

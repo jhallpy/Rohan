@@ -1,6 +1,6 @@
 {
   "name": "rohan",
-  "version": "v1.4.0",
+  "version": "v1.4.1",
   "description": "Art prompt bot for Discord",
   "main": "rohan.js",
   "scripts": {
