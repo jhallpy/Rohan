@@ -1,4 +1,4 @@
-const heaven = require('../assets/arrays/heaven.json');
+const { heaven } = require('../assets/arrays/heaven.json');
 const misc = require('../utils/misc.js');
 
 exports.run = (client, message, args) => {
