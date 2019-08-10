@@ -97,8 +97,4 @@ client.on('message', message =>{
           console.log(err)
       }
 });
-const init = async () => {
-  
-}
-
 client.login(config.token);
