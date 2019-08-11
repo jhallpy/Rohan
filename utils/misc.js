@@ -1,5 +1,5 @@
 module.exports = {
-  // Checks for User ID. This doesn't check args length due to NEEDING a user ID.
+  // Checks for User ID.
   checkUsers: (message) => {
     if (message.mentions.users.map(u => u.id).length > 1)
       return true;
@@ -8,14 +8,14 @@ module.exports = {
   },
   // Only checks for User IDs to run a different set of instructions.
   checkTwoID: (message) => {
-    if (message.mentions.users.map(u => u.id).length == 2)
+    if (message.mentions.users.map(u => u.id).length === 2)
       return true;
     else
       return false;
   },
   checkRohan: (client, message) => {
     // Must stay as loose comparison, one is string one is int.
-    if (message.mentions.users.map(u => u.id) == client.user.id)
+    if (message.mentions.users.map(u => u.id) === client.user.id)
       return true;
     else
       return false;

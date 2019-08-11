@@ -16,7 +16,7 @@ const misc = require('../utils/misc.js');
 exports.run = (client, message, args) => {
   let msg = args.join(' ').replace(/\s+/g, '').toLowerCase();
   let output = '';
-  for (i = 0; i < msg.length; i++) {
+  for (var i = 0; i < msg.length; i++) {
     if (msg.charAt(i) === 'a') {
       output += misc.randomInArray(adjectives) + ' ';
     } else if (msg.charAt(i) === 'j') {
