@@ -1,10 +1,12 @@
 node_modules/
 config.json
+.eslintrc.json
 todo.txt
 
 test.js
 uh.js
 events
+hidden.js
 
 stats.js
-launch.json
+launch.jsonnode_modules/ 

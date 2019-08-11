@@ -1,4 +1,4 @@
-/*let help = require('../assets/arrays/text.json')
+/* let help = require('../assets/arrays/text.json')
 exports.run = (client, message, args) => {
     if(args === undefined || args.length === 0) message.channel.send(help.santa);
     else{
@@ -14,5 +14,5 @@ exports.run = (client, message, args) => {
     }
 }*/
 exports.run = (client, message, args) => {
-    message.channel.send('Currently under construction.');
-}
+  message.channel.send('Currently under construction.');
+};
