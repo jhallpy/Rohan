@@ -1,20 +1,36 @@
 {
    "lyrics": [
-       {
-           "input": "almost heaven",
-           "reply": "West Virginia."
-       },
-       {
-           "input": "more tests2",
-           "reply": "reply2 electric boogaloo"
-       },
-       {
-           "input": "more tests3",
-           "reply": "more tests3"
-       },
-       {
-           "input": "more tests4",
-           "reply": "more tests4"
-       }
+        {
+            "input": "anytime i need to see your face",
+            "reply": "I just close my eyes,"
+        },
+        {
+            "input": "I am taken to a place",
+            "reply": "Where your crystal minds and magenta feelings take up shelter in the base of my spine, sweet like a chic-a-cherry cola."
+        },
+        {
+            "input": "where your crystal minds and magenta feelings",
+            "reply": "Take up shelter in the base of my spine, sweet like a chic-a-cherry cola."
+        },
+        {
+            "input": "take up shelter in the base of my spine",
+            "reply": "Sweet like a chic-a-cherry cola."
+        },
+        {
+            "input": "every time i close my eyes",
+            "reply": "I wake up feeling so horny."
+        },
+        {
+            "input": "i can't get you outta my mind",
+            "reply": "Sexin' you be all I see."
+        },
+        {
+            "input": "i would give anything",
+            "reply": "Just to make you understand me."
+        },
+        {
+            "input": "i don't give a damn about nothing else",
+            "reply": "Freek'n you is all I need."
+        }
    ]
 }
