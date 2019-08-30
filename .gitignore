@@ -1,7 +1,9 @@
 node_modules/
 config.json
 .eslintrc.json
-todo.txt
+index.js
+error.log
+pm2.log
 
 test.js
 uh.js

@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
       icon_url: client.user.avatarURL,
     },
     title: 'Help',
-    description: help,
+    description: help
   }}
   );
 };

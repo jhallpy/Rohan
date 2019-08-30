@@ -4,7 +4,7 @@ Hello and welcome to Rohan!
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const { token, prefix } = require('./config.json');
+const { token, beta, prefix } = require('./config.json');
 const sing = require('./assets/arrays/sing.json');
 
 const { promisify } = require('util');
@@ -13,15 +13,15 @@ const readdir = promisify(require('fs').readdir);
 const specialComFolder = './special_commands/';
 const commandFolder = './commands/';
 
-var specialCommands = [];
-var specialRegex = '';
-var commands = [];
-var regex = '';
-var singingRegex = '';
 // TODO: Convert to async and make event handlers placed in a separate folder.
 // TODO: Add in escaping for the user input. Currently works well.
 // TODO: Increment version numbers...
 const init = async() => {
+  var specialCommands = [];
+  var specialRegex = '';
+  var commands = [];
+  var regex = '';
+  var singingRegex = '';
   var promise = new Promise((resolve, reject) => {
     readdir(commandFolder, (err, files) => {
       files.forEach(file => {
@@ -66,6 +66,9 @@ const init = async() => {
   })
     .then(() => {
       singingRegex = new RegExp(singingRegex.slice(1), 'g');
+    })
+    .catch((err) => {
+      console.log(err);
     });
   const evtFiles = await readdir('./events/');
   Promise.all([promise, promise1, promise2]).then(evtFiles.forEach(file => {

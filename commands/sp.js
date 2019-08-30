@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
   else if (misc.checkRohan(client, message))
     message.channel.send('Get out of my house!!');
   else
-    message.channel.send(args.join(' '),
-      +"'s favourite thing is a very special `",
-        +misc.randomInArray(objects) + '`.');
+    message.channel.send(args.join(' ')
+      +"'s favourite thing is a very special `"
+        + misc.randomInArray(objects) + '`.');
 };

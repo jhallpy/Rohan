@@ -1,4 +1,5 @@
 module.exports = async(client, x, message) => {
+  const error = require('../utils/error.js');
   const hidden = require('../utils/hidden.js');
   const regex = x.regex;
   const specialRegex = x.specialRegex;
@@ -26,14 +27,13 @@ module.exports = async(client, x, message) => {
     // Ignores messages that don't start with prefix.
     // Also checks against strikethroughs.
     else if (message.content.indexOf(prefix) !== 0 ||
-        message.content.lastIndexOf(prefix) > 0) return;
-
+      message.content.lastIndexOf(prefix) > 0) return;
     else if (command.match(regex) !== null){
       let commandFile = require(`../commands/${command.match(regex)[0]}.js`);
       commandFile.run(client, message, args);
     } else
       message.channel.send('Sorry, I don\'t recognize that command.');
   } catch (err){
-    console.log(err);
+      error(client,message,err);
   }
 };

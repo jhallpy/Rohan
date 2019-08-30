@@ -13,9 +13,7 @@ exports.run = (client, message, args, guild) => {
         names[names.length - 1].length).toLowerCase());
   } else if (args.length === 2){
     let names = message.cleanContent.slice(6).replace(/@+/g, '').split(' ');
-    message.channel.send(names[0].slice(0, 3),
-      +names[names.length - 1].slice(names[names.length - 1].length - 3,
-        names[names.length - 1].length).toLowerCase());
+    message.channel.send(names[0].slice(0,3) + names[names.length - 1].slice(names[names.length - 1].length-3, names[names.length - 1].length).toLowerCase());
   } else
     message.channel.send('Please mention two people.');
 };
