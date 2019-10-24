@@ -13,7 +13,12 @@ const { jobs } = require('../assets/arrays/jobs.json');
 const { objects } = require('../assets/arrays/objects.json');
 const misc = require('../utils/misc.js');
 
-exports.run = (client, message, args) => {
+module.exports = {
+  name: 'random',
+  usage: '~random <Any number of categories ex. ajevt>',
+  description: '`~random` - generates random word prompts, assigned into categories: (A)djectives (J)obs (E)xpressions (V)erbs (T)ransitiveVerbs' 
+    +'(C)lothing (S)trange nouns (F)auna (U)nreal/unusual animals (P)lants (M)eals (O)bjects (L)ocales\nExample: typing `~random aj` might return `abducted basketballer`',
+  execute(client, message, args){
   let msg = args.join(' ').replace(/\s+/g, '').toLowerCase();
   let output = '';
   for (var i = 0; i < msg.length; i++) {
@@ -50,4 +55,5 @@ exports.run = (client, message, args) => {
     message.channel.send('Please use the `~help` command if you need help with this command');
   else
     message.channel.send(output);
+}
 };

@@ -1,6 +1,11 @@
 const { jojos } = require('../assets/arrays/jojos.json');
 const misc = require('../utils/misc.js');
 
-exports.run = (client, message, args) => {
-  message.channel.send(misc.randomInArray(jojos));
+module.exports = {
+  name: 'jojo',
+  usage: '~jojo',
+  description: '`~jojo`- Generates a random JoJo character(s), with only major characters.',
+  execute(client, message, args){
+    message.channel.send(misc.randomInArray(jojos));
+  }
 };
