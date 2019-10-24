@@ -1,39 +1,32 @@
-module.exports = async(client, x, message) => {
+module.exports = async(client, message) => {
   const error = require('../utils/error.js');
-  const hidden = require('../utils/hidden.js');
-  const regex = x.regex;
-  const specialRegex = x.specialRegex;
-  const singingRegex = x.singingRegex;
-  const prefix = x.prefix;
-  let args = message.content.slice(prefix).trim().split(/ +/g);
-  const command = args.shift().toLowerCase().replace(/[\W_]+/g, '');
+  const prefix = client.prefix.map((x) => x.toString());
+  const args = message.content.slice(prefix).trim().split(/ +/g);
+  console.log(args);
+  const commandName = args.shift().toLowerCase().replace(/[\W_]+/g, '');
+  console.log(commandName);
   try {
-
-    let y = hidden.oof(message.content);
     // Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
     if (message.author.bot) return;
     // must check for prefix, will mess up other commands if it doesn't.
     else if (message.content.indexOf(prefix) !== 0){
-      if (y.match(specialRegex) !== null){
-        y = y.match(specialRegex)[0];
-        let commandFile = require(`../special_commands/${y}.js`);
-        commandFile.run(client, message, args);
-      } else if (message.content.match(singingRegex) !== null){
-        args = message.content.match(singingRegex)[0];
-        let commandFile = require('../special_commands/sing.js');
-        commandFile.run(client, message, args);
-      }
+      args.forEach(word => {
+        console.log(word);
+        if (client.specialCommands.has(word.toLowerCase())){
+          client.specialCommands.get(word.toLowerCase()).execute(client, message, args);
+          return;
+        }
+        // TODO: Add singing back in eventually.
+      });
     }
     // Ignores messages that don't start with prefix.
     // Also checks against strikethroughs.
-    else if (message.content.indexOf(prefix) !== 0 ||
-      message.content.lastIndexOf(prefix) > 0) return;
-    else if (command.match(regex) !== null){
-      let commandFile = require(`../commands/${command.match(regex)[0]}.js`);
-      commandFile.run(client, message, args);
-    } else
-      message.channel.send('Sorry, I don\'t recognize that command.');
+    else if (message.content.indexOf(prefix) !== 0 || message.content.lastIndexOf(prefix) > 0) return;
+    else if (client.commands.has(commandName))
+      client.commands.get(commandName).execute(client, message, args);
+    else
+      message.channel.send('Sorry, I don\'t recognize that command. If you need help, use the `~help` command.');
   } catch (err){
-      error(client,message,err);
+    error(client, message, err);
   }
 };

@@ -1,6 +1,6 @@
 {
   "name": "rohan",
-  "version": "v1.6.0-beta",
+  "version": "v2.0.0",
   "description": "Art prompt bot for Discord",
   "main": "rohan.js",
   "scripts": {
@@ -21,10 +21,10 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "eslint": "^6.2.2",
+    "eslint": "^6.5.1",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-security": "^1.4.0",
     "install": "^0.13.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.4"
   }
 }
