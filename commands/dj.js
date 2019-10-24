@@ -5,7 +5,7 @@ const misc = require('../utils/misc.js');
 module.exports = {
   name: 'dj',
   usage: '~dj <name> or <@user>',
-  description: 'Need Clarification',
+  description: 'Returns a user\'s ideal occupation. (Randomly generated)',
   execute(client, message, args){
     if (misc.checkUsers(message))
       message.channel.send('Please only tag one person.');

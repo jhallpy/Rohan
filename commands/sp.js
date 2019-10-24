@@ -4,7 +4,7 @@ const misc = require('../utils/misc.js');
 module.exports = {
   name: 'sp',
   usage: '~sp <name> or <@user>',
-  description: 'Need Clarification',
+  description: 'Returns a user\'s favourite object. (Randomly generated)',
   execute(client, message, args){
     if (args.length < 1)
       message.channel.send('Who? Where?');

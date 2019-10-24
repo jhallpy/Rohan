@@ -1,17 +1,17 @@
 module.exports = async(client, message) => {
   const error = require('../utils/error.js');
   const prefix = client.prefix.map((x) => x.toString());
-  const args = message.content.slice(prefix).trim().split(/ +/g);
-  console.log(args);
+  let args = message.content.replace(prefix, '').replace(/[\W_]+/g, ' ').trim().split(/ +/g);
   const commandName = args.shift().toLowerCase().replace(/[\W_]+/g, '');
-  console.log(commandName);
   try {
+    console.log(message.mentions.users)
     // Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
     if (message.author.bot) return;
     // must check for prefix, will mess up other commands if it doesn't.
+    // TODO: Convert back to regex. Performs quicker than iteration over the array.
     else if (message.content.indexOf(prefix) !== 0){
+      args = message.content.replace(/[\W_]+/g, ' ').trim().split(/ +/g);
       args.forEach(word => {
-        console.log(word);
         if (client.specialCommands.has(word.toLowerCase())){
           client.specialCommands.get(word.toLowerCase()).execute(client, message, args);
           return;
