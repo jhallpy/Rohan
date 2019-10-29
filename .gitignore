@@ -4,7 +4,10 @@ config.json
 index.js
 error.log
 pm2.log
+error
 
+assets/db
+tests
 test.js
 uh.js
 hidden.js

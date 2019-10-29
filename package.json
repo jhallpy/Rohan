@@ -1,6 +1,6 @@
 {
   "name": "rohan",
-  "version": "v2.0.0",
+  "version": "v3.0.0-beta",
   "description": "Art prompt bot for Discord",
   "main": "rohan.js",
   "scripts": {
@@ -16,15 +16,21 @@
     "Aver <jhallcs12@gmail.com> (https://github.com/joshua-hallwd)"
   ],
   "dependencies": {
+    "date-fns": "^2.6.0",
     "discord.js": "^11.5.1",
     "moment": "^2.24.0",
+    "node-cron": "^2.0.3",
+    "sqlite3": "^4.1.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.5.1",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-security": "^1.4.0",
     "install": "^0.13.0",
-    "nodemon": "^1.19.4"
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.4",
+    "sinon": "^7.5.0"
   }
 }
