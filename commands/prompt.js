@@ -16,5 +16,5 @@ module.exports = {
         .replace(/\$person1/g, args[0])
         .replace(/\$person2/g, args[1]));
     }
-  }
+  },
 };

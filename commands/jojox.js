@@ -7,5 +7,5 @@ module.exports = {
   description: '`~jojox`- Generates a random JoJo character(s), including minor characters.',
   execute(client, message, args){
     message.channel.send(misc.randomInArray(jojox));
-  }
+  },
 };

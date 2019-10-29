@@ -20,5 +20,5 @@ module.exports = {
       message.channel.send(names[0].slice(0, 3) + names[names.length - 1].slice(names[names.length - 1].length - 3, names[names.length - 1].length).toLowerCase());
     } else
       message.channel.send('Please mention two people.');
-  }
+  },
 };

@@ -16,5 +16,5 @@ module.exports = {
       message.channel.send(args.join(' ')
         + "'s favourite thing is a very special `"
           + misc.randomInArray(objects) + '`.');
-  }
+  },
 };

@@ -1,6 +1,6 @@
 module.exports = {
   name: 'help',
-  help: 'test',
+  description: 'test',
   execute(client, message, args){
   // message.reply('I have sent you a DM with information.');
     if (args.length === 0){

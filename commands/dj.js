@@ -19,5 +19,5 @@ module.exports = {
         + misc.randomInArray(jobs) + '`.');
     else
       message.channel.send('Who? Where?');
-  }
+  },
 };

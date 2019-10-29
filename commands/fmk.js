@@ -12,5 +12,5 @@ module.exports = {
       message.channel.send('Please use 3 names :thinking:');
     else
       message.channel.send('An error occured. Please use the `~help` command if you need help.');
-  }
+  },
 };

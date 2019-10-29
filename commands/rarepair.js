@@ -7,5 +7,5 @@ module.exports = {
   description: '`~rarepair` - Generates a random JoJo character(s), with only major characters.',
   execute(client, message, args){
     message.channel.send(misc.randomInArray(jojos) + '\n' + misc.randomInArray(jojos));
-  }
+  },
 };

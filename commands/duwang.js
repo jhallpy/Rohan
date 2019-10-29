@@ -7,5 +7,5 @@ module.exports = {
   description: '`~duwang` - don\'t be dong.',
   execute(client, message, args){
     message.channel.send(misc.randomInArray(duwang));
-  }
+  },
 };

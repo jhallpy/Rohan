@@ -17,5 +17,5 @@ module.exports = {
       message.channel.send(args[0] + misc.randomInArray(heaven));
     else
       message.channel.send('Who? Where?');
-  }
+  },
 };
