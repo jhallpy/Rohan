@@ -26,7 +26,6 @@ module.exports = async(client, message) => {
     else if (client.commands.has(commandName)){
       let args = message.content.replace(prefix, '').trim().split(/ +/g);
       args.shift();
-      console.log(args);
       client.commands.get(commandName).execute(client, message, args);
       db.updateCommand(commandName.replace(/[\W_]+/g, ' '));
     }
