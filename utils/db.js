@@ -19,11 +19,11 @@ module.exports = {
         return console.error(err.message + ' close db.js');
     });
   },
-  addUser: (guild, user, username) => {
+  addUser: (guild, user, username, request) => {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
     db.get('SELECT uniqueid FROM SecretSanta WHERE guildid = ? AND active = "true";', guild, (err, rows) => {
       if (err) return console.log(err.message);
-      db.run('INSERT INTO SantaEntries (uniqueid, userid, guildid, username, received) VALUES (? ,? ,?, ?, "false");', [rows.uniqueid, user, guild, username], (err) => {
+      db.run('INSERT INTO SantaEntries (uniqueid, userid, guildid, request, username, received) VALUES (? ,?, ?, ?, ?, "false");', [rows.uniqueid, user, guild, request, username], (err) => {
         if (err) console.log(err);
       });
     });
@@ -390,4 +390,3 @@ module.exports = {
     });
   },
 };
-

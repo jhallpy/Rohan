@@ -21,7 +21,8 @@ module.exports = {
             {
               name: '**IMPORTANT NOTICE**',
               value: 'If you **can not** receive DM\'s you *must* turn them on to use most santa commands. And you will **not** receive your gift if you partake in an event.\n'
-                  + 'If you have any feedback for these commands or notice any mistakes, please join the help discord and let me know.',
+                  + 'If you have any feedback for these commands or notice any mistakes, please join the help discord and let me know.\n'
+                  +'**ALL TIMES ARE LOCAL TO EST/EDT**',
             },
             {
               name: `${client.santaCommands.get('start').name}`,
@@ -37,11 +38,6 @@ module.exports = {
               name: `${client.santaCommands.get('leave').name}`,
               value: `${client.santaCommands.get('leave').usage}\n`
                 + `${client.santaCommands.get('leave').description}\n`,
-            },
-            {
-              name: `${client.santaCommands.get('request').name}`,
-              value: `${client.santaCommands.get('request').usage}\n`
-                + `${client.santaCommands.get('request').description}\n`,
             },
             {
               name: `${client.santaCommands.get('gift').name}`,
@@ -71,7 +67,8 @@ module.exports = {
                     + `Starting Date of event: \`${moment(row.startdate, 'YYYY/M/D ha').format('LLL')}\`\n`
                     + `Ending Date when gifts are sent: \`${moment(row.enddate, 'YYYY/M/D ha').format('LLL')}\`\n`
                     + `Rules of event: \`${row.rules}\`\n`
-                    + `Event Owner: \`${row.ownername}\``,
+                    + `Event Owner: \`${row.ownername}\`\n`
+                    +'**ALL TIMES ARE LOCAL TO EST/EDT**',
             },
             {
               name: `${client.santaCommands.get('join').name}`,
@@ -82,11 +79,6 @@ module.exports = {
               name: `${client.santaCommands.get('leave').name}`,
               value: `${client.santaCommands.get('leave').usage}\n`
             + `${client.santaCommands.get('leave').description}\n`,
-            },
-            {
-              name: `${client.santaCommands.get('request').name}`,
-              value: `${client.santaCommands.get('request').usage}\n`
-            + `${client.santaCommands.get('request').description}\n`,
             },
             {
               name: `${client.santaCommands.get('gift').name}`,

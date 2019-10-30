@@ -67,7 +67,8 @@ module.exports = {
                                         .setColor(0x3a8d31)
                                         .setAuthor(client.user.username, client.user.avatarURL)
                                         .setTitle(`Rohan\'s Delivery Service for ${user.username}`)
-                                        .addField('Your assigned request!', `${request.request}\n If you received your own request, please contact the event owner and submit a bug report in the help discord.`);
+                                        .addField('Your assigned request!', `\`${request.request}\`\n If you received your own request, please contact the event owner and submit a bug report in the help discord.`)
+                                        .addField('Additional info', 'Currently I have no safeguard in place for a null request, treat it as a "surprise me" to the person.');
                                     try{
                                         client.users.get(user.userid).send(embed);
                                     }
