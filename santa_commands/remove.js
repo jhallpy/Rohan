@@ -21,7 +21,7 @@ module.exports = {
         if (message.deletable){
           util.removeUser(message.guild.id, message.mentions.users.first().id, row.uniqueid);
           message.author.send(`The user ${message.mentions.users.first().username} has been removed from the event.`);
-          client.users.get().send(message.mentions.users.first().id).send(`You have been removed from ${message.author.username}'s event.`);
+          client.users.get(message.mentions.users.first().id).send(`You have been removed from ${message.author.username}'s event.`);
           message.delete();
         } else {
           console.log(message.guild.id);
