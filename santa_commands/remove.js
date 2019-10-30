@@ -15,7 +15,7 @@ module.exports = {
         message.reply('You are not the owner of the event.');
       } else if (moment(row.startdate, 'YYYY/M/D ha').isBefore(moment(date, 'YYYY/M/D ha'))){
         message.reply('The event has already started. Use the `~santa check` command to sort this manually.');
-      }  else if (userinfo.uniqueid !== row.uniqueid){
+      } else if (userinfo.uniqueid !== row.uniqueid){
         message.reply('This user is not in your event.');
       } else {
         if (message.deletable){
@@ -23,11 +23,10 @@ module.exports = {
           message.author.send(`The user ${message.mentions.users.first().username} has been removed from the event.`);
           client.users.get().send(message.mentions.users.first().id).send(`You have been removed from ${message.author.username}'s event.`);
           message.delete();
-        }
-        else{
-          console.log(message.guild.id)
-          console.log(message.mentions.users.first().id)
-          console.log(row.uniqueid)
+        } else {
+          console.log(message.guild.id);
+          console.log(message.mentions.users.first().id);
+          console.log(row.uniqueid);
           util.removeUser(message.guild.id, message.mentions.users.first().id, row.uniqueid);
           message.author.send(`The user ${message.mentions.users.first().username} has been removed from the event.`);
           client.users.get(message.mentions.users.first().id).send(`You have been removed from ${message.author.username}'s event.`);

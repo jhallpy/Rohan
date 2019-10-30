@@ -95,7 +95,7 @@ module.exports = {
         console.log(err);
       });
   },
-  getAll: (guild, uniqueid)=>{
+  getAll: (guild, uniqueid) => {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
     let waitpls = new Promise((resolve, reject) => {
       db.all('SELECT * FROM SantaEntries WHERE guildid = ? AND uniqueid = ?;', [guild, uniqueid], (err, row) => {
