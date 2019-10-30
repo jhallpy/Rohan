@@ -4,5 +4,5 @@ module.exports = {
   name: 'valid',
   execute(client, message, args){
     message.channel.send(misc.randomInArray(valid));
-  }
+  },
 };
