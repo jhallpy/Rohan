@@ -1,3 +1,4 @@
+'use strict';
 const { adjectives } = require('../assets/arrays/adjectives.json');
 const { expressions } = require('../assets/arrays/expressions.json');
 const { verbs } = require('../assets/arrays/verbs.json');
@@ -12,7 +13,6 @@ const { locales } = require('../assets/arrays/locales.json');
 const { jobs } = require('../assets/arrays/jobs.json');
 const { objects } = require('../assets/arrays/objects.json');
 const misc = require('../utils/misc.js');
-
 module.exports = {
   name: 'random',
   usage: '~random <Any number of categories ex. ajevt>',

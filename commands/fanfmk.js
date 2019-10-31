@@ -1,5 +1,5 @@
+'use strict';
 const misc = require('../utils/misc.js');
-
 module.exports = {
   name: 'fanfmk',
   usage: '~fanfmk <name/@user/arg> <name/@user/arg> <name/@user/arg>',

@@ -1,6 +1,6 @@
+'use strict';
 const prompt = require('../assets/arrays/prompt.json');
 const misc = require('../utils/misc.js');
-
 module.exports = {
   name: 'prompt',
   usage: '~prompt',

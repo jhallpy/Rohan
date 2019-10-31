@@ -1,3 +1,4 @@
+'use strict';
 const util = require('../utils/db.js');
 const moment = require('moment');
 module.exports = {
@@ -8,11 +9,13 @@ module.exports = {
     let date = moment().format('YYYY/M/D hh:mm a');
     if (message.guild === null){
       message.reply('This command does not work in DM\'s');
+    } else if (message.mentions.users.first() === undefined){
+      message.reply('Please tag a user to remove.');
     } else {
       const row = await util.getUserSanta(message.guild.id, message.author.id);
       const userinfo = await util.getUserInfo(message.guild.id, message.mentions.users.first().id);
       if (message.author.id !== row.userid){
-        message.reply('You are not the owner of the event.');
+        message.reply('You are not the owner of the event or there is no active event.');
       } else if (moment(row.startdate, 'YYYY/M/D ha').isBefore(moment(date, 'YYYY/M/D ha'))){
         message.reply('The event has already started. Use the `~santa check` command to sort this manually.');
       } else if (userinfo.uniqueid !== row.uniqueid){

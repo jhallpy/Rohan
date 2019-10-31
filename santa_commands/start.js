@@ -1,3 +1,4 @@
+'use strict';
 const util = require('../utils/db.js');
 const moment = require('moment');
 module.exports = {
@@ -126,7 +127,15 @@ module.exports = {
                         },
                       ],
                     };
-                    message.author.send({embed: santaEmbed});
+                    try{
+                      message.author.send({embed: santaEmbed});
+                    }
+                    catch(err){
+                      if (err){
+                        console.log(err);
+                        message.channel.send({embed: santaEmbed});
+                      }
+                    }
                   }
 
                 });

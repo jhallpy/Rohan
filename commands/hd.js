@@ -1,6 +1,6 @@
+'use strict';
 const { heaven } = require('../assets/arrays/heaven.json');
 const misc = require('../utils/misc.js');
-
 module.exports = {
   name: 'hd',
   usage: '~hd <name> or <@user>',

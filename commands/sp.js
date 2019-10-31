@@ -1,6 +1,6 @@
+'use strict';
 const { objects } = require('../assets/arrays/objects.json');
 const misc = require('../utils/misc.js');
-
 module.exports = {
   name: 'sp',
   usage: '~sp <name> or <@user>',

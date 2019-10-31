@@ -1,3 +1,4 @@
+'use strict';
 const { duwang } = require('../assets/arrays/duwang.json');
 const misc = require('../utils/misc.js');
 

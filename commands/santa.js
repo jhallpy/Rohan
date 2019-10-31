@@ -1,3 +1,4 @@
+'use strict';
 const db = require('../utils/db.js');
 const error = require('../utils/error.js');
 module.exports = {

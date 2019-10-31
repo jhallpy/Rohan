@@ -1,3 +1,4 @@
+'use strict';
 const util = require('../utils/db.js');
 const moment = require('moment');
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
               name: '**IMPORTANT NOTICE**',
               value: 'If you **can not** receive DM\'s you *must* turn them on to use most santa commands. And you will **not** receive your gift if you partake in an event.\n'
                   + 'If you have any feedback for these commands or notice any mistakes, please join the help discord and let me know.\n'
-                  +'**ALL TIMES ARE LOCAL TO EST/EDT**',
+                  + '**ALL TIMES ARE LOCAL TO EST/EDT**',
             },
             {
               name: `${client.santaCommands.get('start').name}`,
@@ -68,7 +69,7 @@ module.exports = {
                     + `Ending Date when gifts are sent: \`${moment(row.enddate, 'YYYY/M/D ha').format('LLL')}\`\n`
                     + `Rules of event: \`${row.rules}\`\n`
                     + `Event Owner: \`${row.ownername}\`\n`
-                    +'**ALL TIMES ARE LOCAL TO EST/EDT**',
+                    + '**ALL TIMES ARE LOCAL TO EST/EDT**',
             },
             {
               name: `${client.santaCommands.get('join').name}`,

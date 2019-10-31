@@ -1,6 +1,6 @@
+'use strict';
 const { jojos } = require('../assets/arrays/jojos.json');
 const misc = require('../utils/misc.js');
-
 module.exports = {
   name: 'jojo',
   usage: '~jojo',

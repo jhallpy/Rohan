@@ -1,3 +1,4 @@
+'use strict';
 module.exports = async(client, message, err) => {
   const moment = require('moment');
   const { owner } = require('../config.json');

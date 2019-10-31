@@ -1,3 +1,4 @@
+'use strict';
 const sqlite3 = require('sqlite3').verbose();
 const moment = require('moment');
 module.exports = {
@@ -53,6 +54,7 @@ module.exports = {
         } else if (row[row.length - 1].active === 'true' && row[row.length - 1].userid !== user){
           resolve('notCreator');
         } else resolve(false);
+        if (err) return console.log(err);
       });
     })
       .then((result) => {
@@ -79,21 +81,13 @@ module.exports = {
   },
   enddate: (end, guild, user) => {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
-    let waitpls = new Promise((resolve, reject) => {
-      db.run('UPDATE SecretSanta SET enddate = ? WHERE guildid = (?) AND userid = (?) AND active = "true";', [end, guild, user], (err) => {
-        if (err) console.log(err);
-        resolve();
-      });
-    })
-      .then(() => {
-        db.close((err) => {
-          if (err)
-            return console.error(err.message + ' close db.js');
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    db.run('UPDATE SecretSanta SET enddate = ? WHERE guildid = (?) AND userid = (?) AND active = "true";', [end, guild, user], (err) => {
+      if (err) console.log(err);
+    });
+    db.close((err) => {
+      if (err)
+        return console.error(err.message + ' close db.js');
+    });
   },
   getAll: (guild, uniqueid) => {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
@@ -119,13 +113,15 @@ module.exports = {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
     let waitpls = new Promise((resolve, reject) => {
       db.all('SELECT * FROM SecretSanta WHERE active = "true";', (err, row) => {
+        if (err) return console.log(err);
         resolve(row);
       });
     })
       .then((result) => {
         db.close((err) => {
-          if (err)
+          if (err){
             return console.error(err.message + ' close db.js');
+          }
         });
         return result;
       })
@@ -138,13 +134,15 @@ module.exports = {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
     let waitpls = new Promise((resolve, reject) => {
       db.all('SELECT * FROM SantaEntries WHERE uniqueid = ?;', uniqueid, (err, row) => {
+        if (err) return console.log(err);
         resolve(row);
       });
     })
       .then((result) => {
         db.close((err) => {
-          if (err)
+          if (err){
             return console.error(err.message + ' close db.js');
+          }
         });
         return result;
       })
@@ -154,16 +152,18 @@ module.exports = {
     return waitpls;
   },
   getRequest: (user, guild, uniqueid) => {
-    let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
+    let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.log(err); });
     let waitpls = new Promise((resolve, reject) => {
       db.get('SELECT request FROM SantaEntries WHERE userid = ? AND guildid = ? AND uniqueid = ?;', [user, guild, uniqueid], (err, row) => {
+        if (err) return console.log(err);
         resolve(row);
       });
     })
       .then((result) => {
         db.close((err) => {
-          if (err)
+          if (err){
             return console.error(err.message + ' close db.js');
+          }
         });
         return result;
       })
@@ -173,17 +173,19 @@ module.exports = {
     return waitpls;
   },
   getSanta: (guild, user) => {
-    let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
+    let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.log(err); });
     let date = moment().format('YYYY/M/D ha');
     let waitpls = new Promise((resolve, reject) => {
       db.all('SELECT * FROM SecretSanta WHERE guildid = ?;', guild, (err, row) => {
-        if (row[row.length - 1] !== undefined && row[row.length - 1].active === 'true'){
+        if (err) return console.log(err);
+        else if (row[row.length - 1] !== undefined && row[row.length - 1].active === 'true'){
           resolve(row[row.length - 1]);
         } else {
-          db.run('INSERT INTO SecretSanta (guildid, userid, active, started, sent) VALUES(?, ? , "true", ?, "false");', [guild, user, date], (err, row) => {
-            if (err)console.log(err);
+          db.run('INSERT INTO SecretSanta (guildid, userid, active, started) VALUES(?, ? , "true", ?);', [guild, user, date], (err, row) => {
+            if (err) { return console.log(err); }
             db.all('SELECT * FROM SecretSanta WHERE guildid = ?;', guild, (err, row) => {
-              if (row[row.length - 1] !== undefined && row[row.length - 1].active === 'true'){
+              if (err) return console.log(err);
+              else if (row[row.length - 1] !== undefined && row[row.length - 1].active === 'true'){
                 resolve(row[row.length - 1]);
               }
             });
@@ -224,14 +226,13 @@ module.exports = {
     return waitpls;
   },
   getUserInfo: (guild, user) => {
-    let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
+    let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.log(err); });
     let waitpls = new Promise((resolve, reject) => {
-      db.serialize((err) => {
-        db.all('SELECT * FROM SantaEntries WHERE guildid = ? AND userid = ?;', [guild, user], (err, row) => {
-          if (row[row.length - 1] !== undefined){
-            resolve(row[row.length - 1]);
-          } else resolve(row);
-        });
+      db.all('SELECT * FROM SantaEntries WHERE guildid = ? AND userid = ?;', [guild, user], (err, row) => {
+        if (err) return console.log(err);
+        else if (row[row.length - 1] !== undefined){
+          resolve(row[row.length - 1]);
+        } else resolve(row);
       });
     })
       .then((result) => {
@@ -250,10 +251,9 @@ module.exports = {
     // TODO: Finish this.
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
     let waitpls = new Promise((resolve, reject) => {
-      db.serialize((err) => {
-        db.get('SELECT request FROM SantaEntries WHERE guildid = ? AND userid = ? AND uniqueid = ?;', guild, (err, row) => {
-          resolve(row);
-        });
+      db.get('SELECT request FROM SantaEntries WHERE guildid = ? AND userid = ? AND uniqueid = ?;', guild, (err, row) => {
+        if (err) return console.log(err);
+        resolve(row);
       });
     })
       .then((result) => {
@@ -271,12 +271,11 @@ module.exports = {
   getUserSanta: (guild, user) => {
     let db = new sqlite3.Database('./assets/db/rohan.db', (err) => { if (err) return console.message(err.message + ' db.js'); });
     let waitpls = new Promise((resolve, reject) => {
-      db.serialize((err) => {
-        db.all('SELECT * FROM SecretSanta WHERE guildid = ?;', guild, (err, row) => {
-          if (row[row.length - 1] !== undefined && row[row.length - 1].active === 'true'){
-            resolve(row[row.length - 1]);
-          } else resolve(row);
-        });
+      db.all('SELECT * FROM SecretSanta WHERE guildid = ?;', guild, (err, row) => {
+        if (err) return console.log(err);
+        else if (row[row.length - 1] !== undefined && row[row.length - 1].active === 'true'){
+          resolve(row[row.length - 1]);
+        } else resolve(row);
       });
     })
       .then((result) => {

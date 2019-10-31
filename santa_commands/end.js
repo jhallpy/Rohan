@@ -1,3 +1,4 @@
+'use strict';
 const util = require('../utils/db.js');
 module.exports = {
   name: 'end',

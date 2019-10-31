@@ -1,6 +1,7 @@
 /*
 Hello and welcome to Rohan!
 */
+'use strict';
 const Discord = require('discord.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -23,7 +24,6 @@ const santaComFolder = './santa_commands';
 
 
 // TODO: Increment version numbers...
-// TODO: Add Database
 const commandUsage = 'CREATE TABLE IF NOT EXISTS CommandUsage (command TEXT UNIQUE PRIMARY KEY, uses TEXT);';
 const guilds = 'CREATE TABLE IF NOT EXISTS Guilds (guildid TEXT PRIMARY KEY, guildname TEXT, guildsize TEXT, guildusage TEXT, prefix TEXT);';
 const user = 'CREATE TABLE IF NOT EXISTS User (userid TEXT PRIMARY KEY, rating TEXT, numberjoined TEXT);';
@@ -139,9 +139,9 @@ const init = async() => {
       const event = require(`./events/${file}`);
       client.on(eventName, event.bind(null, client));
     }));
-  client.login(beta);
+  client.login(token);
   cron.schedule('1 */1 * * *', () => {
-    hourly.execute(client);
+    hourly.execute();
   });
 };
 init();

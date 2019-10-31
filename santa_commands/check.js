@@ -1,3 +1,4 @@
+'use strict';
 const util = require('../utils/db.js');
 const discord = require('discord.js');
 module.exports = {

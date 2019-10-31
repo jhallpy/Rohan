@@ -1,3 +1,4 @@
+'use strict';
 const { jojox } = require('../assets/arrays/jojox.json');
 const misc = require('../utils/misc.js');
 
