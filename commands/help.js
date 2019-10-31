@@ -20,79 +20,11 @@ module.exports = {
             + '**Join Rohan\'s Discord: https://discord.gg/c5F7Zjz There you can request help, see planned features and updates, as well as make suggestions!**',
           },
           {
-            name: `${client.commands.get('crackship').name}`,
-            value: `${client.commands.get('crackship').usage}\n`
-              + `${client.commands.get('crackship').description}\n`,
-          },
-          {
-            name: `${client.commands.get('dj').name}`,
-            value: `${client.commands.get('dj').usage}\n`
-              + `${client.commands.get('dj').description}\n`,
-          },
-          {
-            name: `${client.commands.get('duwang').name}`,
-            value: `${client.commands.get('duwang').usage}\n`
-              + `${client.commands.get('duwang').description}\n`,
-          },
-          {
-            name: `${client.commands.get('fanfmk').name}`,
-            value: `${client.commands.get('fanfmk').usage}\n`
-              + `${client.commands.get('fanfmk').description}\n`,
-          },
-          {
-            name: `${client.commands.get('fmk').name}`,
-            value: `${client.commands.get('fmk').usage}\n`
-              + `${client.commands.get('fmk').description}\n`,
-          },
-          {
-            name: `${client.commands.get('hd').name}`,
-            value: `${client.commands.get('hd').usage}\n`
-              + `${client.commands.get('hd').description}\n`,
-          },
-          {
-            name: `${client.commands.get('help').name}`,
-            value: `${client.commands.get('help').usage}\n`
-              + `${client.commands.get('help').description}\n`,
-          },
-          {
-            name: `${client.commands.get('jojo').name}`,
-            value: `${client.commands.get('jojo').usage}\n`
-              + `${client.commands.get('jojo').description}\n`,
-          },
-          {
-            name: `${client.commands.get('jojox').name}`,
-            value: `${client.commands.get('jojox').usage}\n`
-              + `${client.commands.get('jojox').description}\n`,
-          },
-          {
-            name: `${client.commands.get('prompt').name}`,
-            value: `${client.commands.get('prompt').usage}\n`
-              + `${client.commands.get('prompt').description}\n`,
-          },
-          {
-            name: `${client.commands.get('random').name}`,
-            value: `${client.commands.get('random').usage}\n`
-              + `${client.commands.get('random').description}\n`,
-          },
-          {
-            name: `${client.commands.get('rarepair').name}`,
-            value: `${client.commands.get('rarepair').usage}\n`
-              + `${client.commands.get('rarepair').description}\n`,
-          },
-          {
-            name: `${client.commands.get('santa').name}`,
-            value: `${client.commands.get('santa').usage}\n`
-              + `${client.commands.get('santa').description}\n`,
-          },
-          {
-            name: `${client.commands.get('ship').name}`,
-            value: `${client.commands.get('ship').usage}\n`
-              + `${client.commands.get('ship').description}\n`,
-          },
-          {
-            name: `${client.commands.get('sp').name}`,
-            value: `${client.commands.get('sp').usage}\n`
-              + `${client.commands.get('sp').description}\n`,
+            name: 'List of Commands',
+            value: `${client.commands.get('crackship').name},\t${client.commands.get('dj').name},\t${client.commands.get('duwang').name},\t\t${client.commands.get('fanfmk').name},\t`
+                  +`${client.commands.get('fmk').name},\t${client.commands.get('hd').name},\t${client.commands.get('help').name},\t${client.commands.get('jojo').name},\t`
+                  +`${client.commands.get('jojox').name},\t${client.commands.get('prompt').name},\t${client.commands.get('random').name},\t${client.commands.get('rarepair').name},\t`
+                  +`${client.commands.get('santa').name},\t${client.commands.get('ship').name},\t${client.commands.get('sp').name}\t`,
           },
         ],
       };

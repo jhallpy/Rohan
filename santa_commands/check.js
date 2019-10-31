@@ -16,7 +16,6 @@ module.exports = {
       } else {
 
         let data = await util.getAll(message.guild.id, row.uniqueid);
-        console.log(data);
         data.forEach((x) => {
           let embed = new discord.RichEmbed()
             .setColor(0x3a8d31)

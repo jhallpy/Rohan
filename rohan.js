@@ -139,9 +139,9 @@ const init = async() => {
       const event = require(`./events/${file}`);
       client.on(eventName, event.bind(null, client));
     }));
-  client.login(token);
+  client.login(beta);
   cron.schedule('1 */1 * * *', () => {
-    hourly.execute();
+    hourly.execute(client);
   });
 };
 init();
