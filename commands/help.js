@@ -22,9 +22,9 @@ module.exports = {
           {
             name: 'List of Commands',
             value: `${client.commands.get('crackship').name},\t${client.commands.get('dj').name},\t${client.commands.get('duwang').name},\t\t${client.commands.get('fanfmk').name},\t`
-                  +`${client.commands.get('fmk').name},\t${client.commands.get('hd').name},\t${client.commands.get('help').name},\t${client.commands.get('jojo').name},\t`
-                  +`${client.commands.get('jojox').name},\t${client.commands.get('prompt').name},\t${client.commands.get('random').name},\t${client.commands.get('rarepair').name},\t`
-                  +`${client.commands.get('santa').name},\t${client.commands.get('ship').name},\t${client.commands.get('sp').name}\t`,
+                  + `${client.commands.get('fmk').name},\t${client.commands.get('hd').name},\t${client.commands.get('help').name},\t${client.commands.get('jojo').name},\t`
+                  + `${client.commands.get('jojox').name},\t${client.commands.get('prompt').name},\t${client.commands.get('random').name},\t${client.commands.get('rarepair').name},\t`
+                  + `${client.commands.get('santa').name},\t${client.commands.get('ship').name},\t${client.commands.get('sp').name}\t`,
           },
         ],
       };
