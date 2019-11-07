@@ -9,7 +9,6 @@ module.exports = async(client, message) => {
   // Also makes it a global and case insensitive regex.
   //   /\bvalid\b/gi
   const spRegex = new RegExp(client.specialRegex.map((x)=> x).toString().slice(1), 'gi');
-  console.log(spRegex);
   try {
     // Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
     if (message.author.bot) return;
@@ -17,8 +16,7 @@ module.exports = async(client, message) => {
     // must check for prefix, will mess up other commands if it doesn't.
     else if (message.content.indexOf(prefix) !== 0){
       let msg = message.content.replace(/[.*+?^${}()|[\]\\=\-_<>\%\/&#@!~`:;"',]/g, 'oof');
-      if(msg.match(spRegex)[0]){
-        console.log(msg.match(spRegex)[0])
+      if(msg.match(spRegex)){
         client.specialCommands.get(msg.match(spRegex)[0].toLowerCase()).execute(client, message, args);
           db.updateCommand(msg.match(spRegex)[0].toLowerCase());
           return;
