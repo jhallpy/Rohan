@@ -5,22 +5,22 @@ module.exports = async(client, message) => {
   const prefix = client.prefix.map((x) => x.toString());
   let args = message.content.replace(prefix, '').replace(/[\W_]+/g, ' ').trim().split(/ +/g);
   const commandName = args.shift().toLowerCase().replace(/[\W_]+/g, '');
+  // Takes stored object, convers to string, then to regex, slices off uneeded or at the start.
+  // Also makes it a global and case insensitive regex.
+  //   /\bvalid\b/gi
   const spRegex = new RegExp(client.specialRegex.map((x)=> x).toString().slice(1), 'gi');
   console.log(spRegex);
   try {
-    // Takes the stored object, converts it to a string, then converts that to a regex, then slices off the
-    // extra at the beginning of the regex and sets it to global. Objects store a regex as a string so it
-    // must be created here.
-    //   /\bvalid\b/gi
     // Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
     if (message.author.bot) return;
 
     // must check for prefix, will mess up other commands if it doesn't.
     else if (message.content.indexOf(prefix) !== 0){
       let msg = message.content.replace(/[.*+?^${}()|[\]\\=\-_<>\%\/&#@!~`:;"',]/g, 'oof');
-      if(msg.match(spRegex)){
-        client.specialCommands.get(msg.match(spRegex)[0]).execute(client, message, args);
-          db.updateCommand(msg.match(spRegex)[0]);
+      if(msg.match(spRegex)[0]){
+        console.log(msg.match(spRegex)[0])
+        client.specialCommands.get(msg.match(spRegex)[0].toLowerCase()).execute(client, message, args);
+          db.updateCommand(msg.match(spRegex)[0].toLowerCase());
           return;
       }
     }
