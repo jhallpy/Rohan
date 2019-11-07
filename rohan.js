@@ -8,6 +8,7 @@ client.commands = new Discord.Collection();
 client.specialCommands = new Discord.Collection();
 client.santaCommands = new Discord.Collection();
 client.prefix = new Discord.Collection();
+client.specialRegex = new Discord.Collection();
 
 const sqlite3 = require('sqlite3').verbose();
 const { token, beta, prefix } = require('./config.json');
@@ -30,6 +31,7 @@ const user = 'CREATE TABLE IF NOT EXISTS User (userid TEXT PRIMARY KEY, rating T
 const secretSantaTable = 'CREATE TABLE IF NOT EXISTS SecretSanta (uniqueid INTEGER PRIMARY KEY, guildid TEXT, startdate TEXT, enddate TEXT, rules TEXT, cutoff TEXT, userid TEXT, ownername TEXT, active TEXT, started TEXT, numberedited TEXT);';
 const entries = 'CREATE TABLE IF NOT EXISTS SantaEntries (uniqueid INTEGER, userid TEXT, guildid TEXT, request TEXT, assigneduserid TEXT, gift TEXT, username TEXT, received TEXT);';
 const init = async() => {
+  let specialRegex = '';
   let db = new sqlite3.Database('./assets/db/rohan.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
       console.error(err.message + ' init');
@@ -82,6 +84,7 @@ const init = async() => {
           const specialCommand = require(`./special_commands/${file}`);
           client.specialCommands.set(specialCommand.name, specialCommand);
           if (specialCommand.name !== undefined){
+            specialRegex += '\|\\b' + specialCommand.name + '\\b';
             db.serialize((err) => {
               db.run('INSERT OR IGNORE INTO CommandUsage (command,uses) VALUES (?,0);', [specialCommand.name], (err) => {
                 if (err)
@@ -95,11 +98,15 @@ const init = async() => {
         if (err)
           throw err;
       });
+      resolve(specialRegex);
     });
   })
-    .catch((err) => {
-      console.log(err);
-    });
+  .then((value)=>{
+    client.specialRegex.set('Regex', value);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
   var santaCommandLoad = new Promise((resolve, reject) => {
     readdir(santaComFolder, (err, files) => {
       files.forEach(file => {
@@ -129,6 +136,7 @@ const init = async() => {
   const evtFiles = await readdir('./events/');
   Promise.all([commandLoad, spCommmandLoad, santaCommandLoad])
     .then(() => {
+      console.log(specialRegex);
       db.close((err) => {
         if (err)
           return console.error(err.message + ' close');

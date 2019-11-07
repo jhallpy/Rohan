@@ -5,21 +5,24 @@ module.exports = async(client, message) => {
   const prefix = client.prefix.map((x) => x.toString());
   let args = message.content.replace(prefix, '').replace(/[\W_]+/g, ' ').trim().split(/ +/g);
   const commandName = args.shift().toLowerCase().replace(/[\W_]+/g, '');
+  const spRegex = new RegExp(client.specialRegex.map((x)=> x).toString().slice(1), 'gi');
+  console.log(spRegex);
   try {
+    // Takes the stored object, converts it to a string, then converts that to a regex, then slices off the
+    // extra at the beginning of the regex and sets it to global. Objects store a regex as a string so it
+    // must be created here.
+    //   /\bvalid\b/gi
     // Ignores all bots, MUST BE AT THE TOP. Avoids infinite loops.
     if (message.author.bot) return;
+
     // must check for prefix, will mess up other commands if it doesn't.
-    // TODO: Convert back to regex. Performs quicker than iteration over the array.
     else if (message.content.indexOf(prefix) !== 0){
-      args = message.content.replace(/[\W_]+/g, ' ').trim().split(/ +/g);
-      args.forEach(word => {
-        if (client.specialCommands.has(word.toLowerCase())){
-          client.specialCommands.get(word.toLowerCase()).execute(client, message, args);
-          db.updateCommand(word);
+      let msg = message.content.replace(/[.*+?^${}()|[\]\\=\-_<>\%\/&#@!~`:;"',]/g, 'oof');
+      if(msg.match(spRegex)){
+        client.specialCommands.get(msg.match(spRegex)[0]).execute(client, message, args);
+          db.updateCommand(msg.match(spRegex)[0]);
           return;
-        }
-        // TODO: Add singing back in eventually.
-      });
+      }
     }
     // Ignores messages that don't start with prefix.
     // Also checks against strikethroughs.
