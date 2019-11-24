@@ -15,9 +15,9 @@ module.exports = {
     else if (args.length > 0)
       message.channel.send(args.join(' ') + " wishes they were the world's greatest  `"
         + misc.randomInArray(jobs) + '`.');
-    else if(args.length === 0)
+    else if (args.length === 0)
       message.channel.send('Who? Where?');
-    else 
+    else
       message.channel.send(message.mentions.members.first() + misc.randomInArray(heaven));
   },
 };

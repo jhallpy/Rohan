@@ -12,7 +12,7 @@ module.exports = {
       message.channel.send('Get out of my house!!');
     else if (args.length > 0)
       message.channel.send(args[0] + misc.randomInArray(heaven));
-    else if(args.length === 0)
+    else if (args.length === 0)
       message.channel.send('Who? Where?');
     else
       message.channel.send(message.mentions.members.first() + misc.randomInArray(heaven));

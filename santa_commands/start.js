@@ -127,10 +127,9 @@ module.exports = {
                         },
                       ],
                     };
-                    try{
+                    try {
                       message.author.send({embed: santaEmbed});
-                    }
-                    catch(err){
+                    } catch (err){
                       if (err){
                         console.log(err);
                         message.channel.send({embed: santaEmbed});
